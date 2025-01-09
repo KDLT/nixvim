@@ -3,6 +3,7 @@
 # automatically save sessions under ~/.local/share/nvim/sessions
 {
   plugins = {
+    # note that auto-session requires XDG_DATA_HOME to be assigned to a writeable directory
     auto-session = {
       enable = true;
       settings = {
