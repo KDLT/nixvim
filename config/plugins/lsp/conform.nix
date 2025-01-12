@@ -1,4 +1,9 @@
 {
+  lib,
+  pkgs,
+  ...
+}:
+{
   plugins.conform-nvim = {
     enable = true;
 
@@ -64,12 +69,6 @@
         ];
       };
 
-      # formatters = {
-      #   nixfmt-rfc-style = {
-      #     command = "${lib.getExe pkgs.nixfmt-rfc-style}";
-      #   };
-      # };
-
       format_on_save = ''
         function(bufnr)
           if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
@@ -104,20 +103,23 @@
         end
       '';
 
-      # formatters = {
-      #   shellcheck = {
-      #     command = lib.getExe pkgs.shellcheck;
-      #   };
-      #   shfmt = {
-      #     command = lib.getExe pkgs.shfmt;
-      #   };
-      #   shellharden = {
-      #     command = lib.getExe pkgs.shellharden;
-      #   };
-      #   squeeze_blanks = {
-      #     command = lib.getExe' pkgs.coreutils "cat";
-      #   };
-      # };
+      formatters = {
+        nixfmt-rfc-style = {
+          command = lib.getExe pkgs.nixfmt-rfc-style;
+        };
+        shellcheck = {
+          command = lib.getExe pkgs.shellcheck;
+        };
+        shfmt = {
+          command = lib.getExe pkgs.shfmt;
+        };
+        shellharden = {
+          command = lib.getExe pkgs.shellharden;
+        };
+        squeeze_blanks = {
+          command = lib.getExe' pkgs.coreutils "cat";
+        };
+      };
 
     };
   };
