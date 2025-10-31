@@ -12,10 +12,12 @@
 
     treesitter-refactor = {
       enable = true;
-      highlightDefinitions = {
-        enable = true;
-        # set to false if update time of ~100
-        clearOnCursorMove = false;
+      settings = {
+        highlight_definitions = {
+          enable = true;
+          # set to false if update time of ~100
+          clear_on_cursor_move = false;
+        };
       };
     };
 

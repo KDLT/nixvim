@@ -2,7 +2,7 @@
   description = "KDLT's nixvim configuration";
 
   inputs = {
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixvim.url = "github:nix-community/nixvim";
     flake-utils.url = "github:numtide/flake-utils";
   };
@@ -44,7 +44,7 @@
           default = nvim;
         };
 
-        devShells.default = import ./shell.nix { inherit pkgs; };
+        devShells.default = import ./config/shell.nix { inherit pkgs; };
       }
     );
 }

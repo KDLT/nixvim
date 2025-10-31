@@ -25,20 +25,22 @@
       inlayHints = true;
 
       servers = {
-        nil_ls = {
-          # nix language server
-          enable = true;
-          settings.nix = {
-            # with nix-index-database installed, i used `nix-locate "bin/nix" | grep nix.out`
-            # verified upon rebuild that this points to the correct path
-            # binary = "${pkgs.nix}/bin/nix"; # i wonder if this would be correct
-            maxMemoryMB = null; # default is null and null means no limit
-            flake = {
-              autoArchive = true; # removes the warning about no autocompletion, uses network
-              autoEvalInputs = true; # this one adds the suggestmentses
-            };
-          };
-        };
+        # nixd.enable = true; # test if nixd is more stable
+        nil_ls.enable = true;
+        # nil_ls = {
+        #   # nix language server
+        #   enable = true;
+        #   settings.nix = {
+        #     # with nix-index-database installed, i used `nix-locate "bin/nix" | grep nix.out`
+        #     # verified upon rebuild that this points to the correct path
+        #     # binary = "${pkgs.nix}/bin/nix"; # i wonder if this would be correct
+        #     maxMemoryMB = null; # default is null and null means no limit
+        #     flake = {
+        #       autoArchive = true; # removes the warning about no autocompletion, uses network
+        #       autoEvalInputs = true; # this one adds the suggestmentses
+        #     };
+        #   };
+        # };
         html.enable = true; # HTML https://github.com/hrsh7th/vscode-langservers-extracted
         emmet_ls.enable = true; # Emmet https://github.com/aca/emmet-ls
         cssls.enable = true; # CSS https://github.com/hrsh7th/vscode-langservers-extracted
