@@ -3,6 +3,10 @@
 { pkgs }:
 pkgs.mkShell {
   buildInputs = with pkgs; [
+    # Frontend
+    typescript-language-server
+    prettierd
+
     # Rust
     cargo
     rustc

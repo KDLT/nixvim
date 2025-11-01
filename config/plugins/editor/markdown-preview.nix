@@ -1,7 +1,7 @@
 {
   plugins = {
     markdown-preview = {
-      enable = true;
+      enable = false; # i don't like markdown preview anymore
       settings = {
         auto_close = 1;
         auto_start = 1;

@@ -58,8 +58,8 @@
         html = [
           "prettierd"
         ];
-        javascript = [ "deno_fmt" ];
-        typescript = [ "deno_fmt" ];
+        javascript = [ "prettierd" ];
+        typescript = [ "prettierd" ];
         markdown = [ "deno_fmt" ];
         cpp = [ "clang_format" ];
         "_" = [
@@ -104,6 +104,9 @@
       '';
 
       formatters = {
+        prettierd = {
+          command = lib.getExe pkgs.prettierd;
+        };
         nixfmt-rfc-style = {
           command = lib.getExe pkgs.nixfmt-rfc-style;
         };

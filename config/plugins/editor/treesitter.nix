@@ -4,6 +4,10 @@
       enable = true;
       nixvimInjections = true;
       settings = {
+        ensure_installed = [
+          "javascript"
+          "typescript"
+        ];
         highlight.enable = true;
         indent.enable = true;
       };

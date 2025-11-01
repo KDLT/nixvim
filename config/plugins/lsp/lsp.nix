@@ -57,7 +57,7 @@
         pylsp.enable = true; # Python https://github.com/python-lsp/python-lsp-server
         jsonls.enable = true; # JSON https://github.com/hrsh7th/vscode-langservers-extracted
         sqls.enable = true; # SQL https://github.com/sqls-server/sqls
-        # ts_ls.enable = true; # TypeScript https://github.com/typescript-language-server/typescript-language-server
+        ts_ls.enable = true; # TypeScript https://github.com/typescript-language-server/typescript-language-server
         yamlls.enable = true; # https://github.com/redhat-developer/yaml-language-server
 
         # helm_ls = { # helm kubernetes management https://github.com/mrjosh/helm-ls
