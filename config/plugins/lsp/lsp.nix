@@ -17,7 +17,7 @@
 
   plugins = {
     lsp-lines.enable = true;
-    lsp-format.enable = true;
+    # lsp-format.enable = true; # DISABLED: conflicts with conform.nvim
     helm.enable = true;
 
     lsp = {
@@ -41,12 +41,26 @@
         #     };
         #   };
         # };
-        html.enable = true; # HTML https://github.com/hrsh7th/vscode-langservers-extracted
+        html = {
+          enable = true; # HTML https://github.com/hrsh7th/vscode-langservers-extracted
+          onAttach.function = ''
+            -- Disable formatting, handled by conform.nvim
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.documentRangeFormattingProvider = false
+          '';
+        };
         emmet_ls.enable = true; # Emmet https://github.com/aca/emmet-ls
         cssls.enable = true; # CSS https://github.com/hrsh7th/vscode-langservers-extracted
         bashls.enable = true; # bash https://github.com/bash-lsp/bash-language-server
         dockerls.enable = true; # dockerfile https://github.com/rcjsuen/dockerfile-language-server-nodejs
-        marksman.enable = true; # markdown https://github.com/artempyanykh/marksman
+        marksman = {
+          enable = true; # markdown https://github.com/artempyanykh/marksman
+          onAttach.function = ''
+            -- Disable formatting, handled by conform.nvim
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.documentRangeFormattingProvider = false
+          '';
+        };
         # pyright.enable = true; # python type checker https://github.com/Microsoft/pyright
         # gopls.enable = true; # google golang https://github.com/golang/tools/tree/master/gopls
         # terraformls.enable = true; # https://github.com/hashicorp/terraform-ls
@@ -57,7 +71,14 @@
         pylsp.enable = true; # Python https://github.com/python-lsp/python-lsp-server
         jsonls.enable = true; # JSON https://github.com/hrsh7th/vscode-langservers-extracted
         sqls.enable = true; # SQL https://github.com/sqls-server/sqls
-        ts_ls.enable = true; # TypeScript https://github.com/typescript-language-server/typescript-language-server
+        ts_ls = {
+          enable = true; # TypeScript https://github.com/typescript-language-server/typescript-language-server
+          onAttach.function = ''
+            -- Disable formatting, handled by conform.nvim
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.documentRangeFormattingProvider = false
+          '';
+        };
         yamlls.enable = true; # https://github.com/redhat-developer/yaml-language-server
 
         # helm_ls = { # helm kubernetes management https://github.com/mrjosh/helm-ls

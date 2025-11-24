@@ -58,8 +58,8 @@
         html = [
           "prettierd"
         ];
-        javascript = [ "prettierd" ];
-        typescript = [ "prettierd" ];
+        javascript = [ "deno_fmt" ];
+        typescript = [ "deno_fmt" ];
         markdown = [ "deno_fmt" ];
         cpp = [ "clang_format" ];
         "_" = [
