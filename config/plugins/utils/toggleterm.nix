@@ -46,6 +46,12 @@
       mode = "n";
       key = "<leader>tt";
       action = "<cmd>ToggleTerm<CR>";
+      options.desc = "Toggle terminal";
+    }
+    {
+      mode = "n";
+      key = "<leader>tf";
+      action = "<cmd>ToggleTerm direction=float<CR>";
       options.desc = "Toggle floating terminal";
     }
     {
