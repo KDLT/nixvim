@@ -7,7 +7,6 @@
     ./mini.nix
     ./telescope.nix
     ./toggleterm.nix
-    ./trim.nix
     ./web-devicons.nix
     ./which-key.nix
   ];

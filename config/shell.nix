@@ -3,32 +3,31 @@
 { pkgs }:
 pkgs.mkShell {
   buildInputs = with pkgs; [
+    # Tools
+    ripgrep
     # Frontend
     typescript-language-server
     prettierd
 
-    # Rust
-    cargo
-    rustc
+    # # Rust
+    # cargo
+    # rustc
 
-    # Gleam
-    gleam
+    # # Gleam
+    # gleam
 
-    # Elixir
-    elixir
+    # # Elixir
+    # elixir
 
-    # FSharp
-    dotnet-sdk
-    fsautocomplete
-    fantomas
+    # # FSharp
+    # dotnet-sdk
+    # fsautocomplete
+    # fantomas
 
-    # Go
-    go
+    # # Go
+    # go
 
-    # Kotlin
-    kotlin-native
-
-    # Tools
-    ripgrep
+    # # Kotlin
+    # kotlin-native
   ];
 }
