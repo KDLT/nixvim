@@ -62,11 +62,6 @@
         typescript = [ "deno_fmt" ];
         markdown = [ "deno_fmt" ];
         cpp = [ "clang_format" ];
-        "_" = [
-          "squeeze_blanks"
-          "trim_whitespace"
-          "trim_newlines"
-        ];
       };
 
       format_on_save = ''
