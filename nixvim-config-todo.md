@@ -22,13 +22,15 @@ plugins.dap = {
 
 ---
 
-### 2. trim.nvim Plugin - REDUNDANT
+### 2. trim.nvim Plugin - REDUNDANT ✅ COMPLETED
 **File**: `config/plugins/utils/trim.nix`
 
 **Problem**: This plugin trims whitespace on save, but ALL your formatters (deno_fmt, prettierd, nixfmt, etc.) already do this. It's adding unnecessary overhead.
 
 **Action**:
-- [ ] DELETE this file entirely - your formatters handle whitespace cleanup
+- [x] DELETE this file entirely - your formatters handle whitespace cleanup
+
+**Completed**: Removed trim.nvim and added toggleterm.nvim instead
 
 ---
 
