@@ -75,32 +75,36 @@
         sqls.enable = true; # SQL https://github.com/sqls-server/sqls
         ts_ls = {
           enable = true; # TypeScript https://github.com/typescript-language-server/typescript-language-server
-          # Temporarily disabled to test jsconfig.json
-          # extraOptions = {
-          #   settings = {
-          #     javascript = {
-          #       inlayHints = {
-          #         includeInlayParameterNameHints = "all";
-          #         includeInlayFunctionParameterTypeHints = true;
-          #       };
-          #     };
-          #     typescript = {
-          #       inlayHints = {
-          #         includeInlayParameterNameHints = "all";
-          #         includeInlayFunctionParameterTypeHints = true;
-          #       };
-          #     };
-          #     implicitProjectConfiguration = {
-          #       checkJs = true; # Enable type checking for JavaScript files globally
-          #     };
-          #   };
-          # };
 
-          # onAttach.function = ''
-          #   -- Disable formatting, handled by conform.nvim
-          #   client.server_capabilities.documentFormattingProvider = false
-          #   client.server_capabilities.documentRangeFormattingProvider = false
-          # '';
+          extraOptions = {
+            settings = {
+              javascript = {
+                validate = { enable = false; }; # Disable validation/diagnostics
+                inlayHints = {
+                  includeInlayParameterNameHints = "all";
+                  includeInlayFunctionParameterTypeHints = true;
+                };
+              };
+              typescript = {
+                validate = { enable = false; }; # Disable validation/diagnostics
+                inlayHints = {
+                  includeInlayParameterNameHints = "all";
+                  includeInlayFunctionParameterTypeHints = true;
+                };
+              };
+              implicitProjectConfiguration = {
+                checkJs = false; # Disable type checking for JavaScript
+              };
+            };
+          };
+
+          onAttach.function = ''
+            -- Disable formatting, handled by conform.nvim
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.documentRangeFormattingProvider = false
+            -- Disable diagnostics but keep other LSP features (autocomplete, goto definition)
+            client.server_capabilities.diagnosticProvider = nil
+          '';
         };
         yamlls.enable = true; # https://github.com/redhat-developer/yaml-language-server
 
