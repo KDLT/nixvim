@@ -1,6 +1,16 @@
+{ pkgs, ... }:
 {
+  # Add telescope-symbols as an extra plugin
+  extraPlugins = [ pkgs.vimPlugins.telescope-symbols-nvim ];
+
+  # doesn't work
+  # extraConfigLua = ''
+  #   require("telescope").load_extension("telescope-symbols-nvim")
+  # '';
+
   plugins.telescope = {
     enable = true;
+
     keymaps = {
       # find files using telescope command line "sugar"
       "<leader><space>" = {
@@ -12,7 +22,7 @@
         options.desc = "Grep (root dir)";
       };
       "<leader>:" = {
-        action = "command history";
+        action = "command_history";
         options.desc = "Command History";
       };
       "<leader>gs" = {
@@ -24,8 +34,9 @@
         options.desc = "Git Commits";
       };
       "<leader>ff" = {
-        action = "find_files";
-        options.desc = "Telescope Files from ./";
+        # action = "find_files";
+        action = "lsp_document_symbols";
+        options.desc = "Show Functions, Variables";
       };
       "<leader>fg" = {
         action = "live_grep";
@@ -53,7 +64,7 @@
       };
       "<leader>fk" = {
         action = "keymaps";
-        options.desc = "View Keymaps but this fails with Harpoon enabled :(";
+        options.desc = "View keymaps";
       };
       "<leader>fs" = {
         action = "symbols";
