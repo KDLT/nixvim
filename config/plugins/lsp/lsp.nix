@@ -16,7 +16,9 @@
   ];
 
   plugins = {
-    lsp-lines.enable = true;
+    # this is inline diagnostics, turned off for reduced clutter
+    # lsp-lines.enable = true;
+
     # lsp-format.enable = true; # DISABLED: conflicts with conform.nvim
     helm.enable = true;
 
@@ -73,11 +75,32 @@
         sqls.enable = true; # SQL https://github.com/sqls-server/sqls
         ts_ls = {
           enable = true; # TypeScript https://github.com/typescript-language-server/typescript-language-server
-          onAttach.function = ''
-            -- Disable formatting, handled by conform.nvim
-            client.server_capabilities.documentFormattingProvider = false
-            client.server_capabilities.documentRangeFormattingProvider = false
-          '';
+          # Temporarily disabled to test jsconfig.json
+          # extraOptions = {
+          #   settings = {
+          #     javascript = {
+          #       inlayHints = {
+          #         includeInlayParameterNameHints = "all";
+          #         includeInlayFunctionParameterTypeHints = true;
+          #       };
+          #     };
+          #     typescript = {
+          #       inlayHints = {
+          #         includeInlayParameterNameHints = "all";
+          #         includeInlayFunctionParameterTypeHints = true;
+          #       };
+          #     };
+          #     implicitProjectConfiguration = {
+          #       checkJs = true; # Enable type checking for JavaScript files globally
+          #     };
+          #   };
+          # };
+
+          # onAttach.function = ''
+          #   -- Disable formatting, handled by conform.nvim
+          #   client.server_capabilities.documentFormattingProvider = false
+          #   client.server_capabilities.documentRangeFormattingProvider = false
+          # '';
         };
         yamlls.enable = true; # https://github.com/redhat-developer/yaml-language-server
 
