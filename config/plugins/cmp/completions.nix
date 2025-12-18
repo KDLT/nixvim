@@ -36,13 +36,44 @@
       settings = {
         snippet.expand = "function(args) require('luasnip').lsp_expand(args.body) end";
         mapping = {
+          # Tab: Jump to next snippet field if in snippet, otherwise select next completion
+          "<Tab>" = {
+            __raw = ''
+              cmp.mapping(function(fallback)
+                local luasnip = require('luasnip')
+                if luasnip.locally_jumpable(1) then
+                  luasnip.jump(1)
+                elseif cmp.visible() then
+                  cmp.select_next_item()
+                else
+                  fallback()
+                end
+              end, { 'i', 's' })
+            '';
+          };
+          # Shift-Tab: Jump to previous snippet field if in snippet, otherwise select previous completion
+          "<S-Tab>" = {
+            __raw = ''
+              cmp.mapping(function(fallback)
+                local luasnip = require('luasnip')
+                if luasnip.locally_jumpable(-1) then
+                  luasnip.jump(-1)
+                elseif cmp.visible() then
+                  cmp.select_prev_item()
+                else
+                  fallback()
+                end
+              end, { 'i', 's' })
+            '';
+          };
+
           "<C-Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
-          "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
           "<C-j>" = "cmp.mapping.select_next_item()";
           "<C-k>" = "cmp.mapping.select_prev_item()";
           "<C-d>" = "cmp.mapping.scroll_docs(-4)";
           "<C-f>" = "cmp.mapping.scroll_docs(4)";
-          "<C-Space>" = "cmp.mapping.complete()";
+          "<C-Enter>" = "cmp.mapping.complete()";
+          "<C-Return>" = "cmp.mapping.complete()";
           "<C-e>" = "cmp.mapping.close()";
 
           # this fucking sucks when it autocompletes the last word on a line so i set it to false

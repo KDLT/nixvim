@@ -79,21 +79,27 @@
           extraOptions = {
             settings = {
               javascript = {
-                validate = { enable = false; }; # Disable validation/diagnostics
+                validate = { enable = true; }; # Enable validation for JSDoc
+                suggest = {
+                  completeFunctionCalls = true; # Enable function signature completion
+                };
                 inlayHints = {
                   includeInlayParameterNameHints = "all";
                   includeInlayFunctionParameterTypeHints = true;
                 };
               };
               typescript = {
-                validate = { enable = false; }; # Disable validation/diagnostics
+                validate = { enable = true; }; # Enable validation
+                suggest = {
+                  completeFunctionCalls = true; # Enable function signature completion
+                };
                 inlayHints = {
                   includeInlayParameterNameHints = "all";
                   includeInlayFunctionParameterTypeHints = true;
                 };
               };
               implicitProjectConfiguration = {
-                checkJs = false; # Disable type checking for JavaScript
+                checkJs = true; # Enable type checking for JavaScript files with JSDoc
               };
             };
           };
@@ -102,8 +108,6 @@
             -- Disable formatting, handled by conform.nvim
             client.server_capabilities.documentFormattingProvider = false
             client.server_capabilities.documentRangeFormattingProvider = false
-            -- Disable diagnostics but keep other LSP features (autocomplete, goto definition)
-            client.server_capabilities.diagnosticProvider = nil
           '';
         };
         yamlls.enable = true; # https://github.com/redhat-developer/yaml-language-server
