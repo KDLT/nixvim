@@ -13,6 +13,31 @@
       action = ":LspStart<CR>";
       options.desc = "LSP Enable";
     }
+    # Diagnostic navigation and display
+    {
+      key = "]d";
+      mode = [ "n" ];
+      action.__raw = "vim.diagnostic.goto_next";
+      options.desc = "Next diagnostic";
+    }
+    {
+      key = "[d";
+      mode = [ "n" ];
+      action.__raw = "vim.diagnostic.goto_prev";
+      options.desc = "Previous diagnostic";
+    }
+    {
+      key = "<leader>d";
+      mode = [ "n" ];
+      action.__raw = "vim.diagnostic.open_float";
+      options.desc = "Show diagnostic in float";
+    }
+    {
+      key = "<leader>q";
+      mode = [ "n" ];
+      action.__raw = "vim.diagnostic.setloclist";
+      options.desc = "Add diagnostics to location list";
+    }
   ];
 
   plugins = {

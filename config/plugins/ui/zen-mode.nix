@@ -30,7 +30,7 @@
   keymaps = [
     {
       mode = "n";
-      key = "<leader>Z";
+      key = "<leader>z";
       action = "<Cmd>ZenMode<CR>";
       options = {
         silent = true;

@@ -3,7 +3,7 @@
   keymaps = [
     {
       mode = "n";
-      key = "<leader><F5>";
+      key = "<leader>u";
       action = "<cmd>UndotreeToggle<CR>";
       options = {
         desc = "Toggle Undotree";

@@ -19,7 +19,7 @@
       };
       "<leader>/" = {
         action = "live_grep";
-        options.desc = "Grep (root dir)";
+        options.desc = "Grep Project Root";
       };
       "<leader>:" = {
         action = "command_history";

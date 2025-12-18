@@ -12,6 +12,34 @@
 
         always_show_bufferline = false;
 
+        # Show harpoon numbers in buffer names
+        name_formatter = {
+          __raw = ''
+            function(buf)
+              local harpoon = require('harpoon')
+              local list = harpoon:list()
+
+              -- Get the buffer's full path
+              local buf_path = vim.api.nvim_buf_get_name(buf.bufnr)
+
+              -- Check if buffer is in harpoon list
+              for i = 1, list:length() do
+                local item = list:get(i)
+                if item and item.value then
+                  -- Compare absolute paths
+                  local harpoon_path = vim.fn.fnamemodify(item.value, ':p')
+                  if harpoon_path == buf_path then
+                    return string.format("%d %s", i, buf.name)
+                  end
+                end
+              end
+
+              -- Not in harpoon, return normal name
+              return buf.name
+            end
+          '';
+        };
+
         offsets = [
           {
             filetype = "neo-tree";

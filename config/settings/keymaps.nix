@@ -31,12 +31,6 @@
       options.desc = "Split Window Below";
     }
     {
-      key = "<leader><F7>";
-      mode = [ "n" ];
-      action = "gg=G";
-      options.desc = "Auto-indent Current Buffer";
-    }
-    {
       key = "<C-c>";
       mode = [ "n" ];
       action = ":b#<CR>";

@@ -45,6 +45,43 @@
           group = "Declared in LSPBuf as Hover";
           mode = "n";
         }
+        # mini.surround integration
+        {
+          __unkeyed-1 = "s";
+          group = "Surround";
+          icon = "󰅪 ";
+          mode = [ "n" "v" ];
+        }
+        {
+          __unkeyed-1 = "sa";
+          desc = "Add surrounding";
+          mode = [ "n" "v" ];
+        }
+        {
+          __unkeyed-1 = "sd";
+          desc = "Delete surrounding";
+          mode = "n";
+        }
+        {
+          __unkeyed-1 = "sr";
+          desc = "Replace surrounding";
+          mode = "n";
+        }
+        {
+          __unkeyed-1 = "sf";
+          desc = "Find surrounding (right)";
+          mode = "n";
+        }
+        {
+          __unkeyed-1 = "sF";
+          desc = "Find surrounding (left)";
+          mode = "n";
+        }
+        {
+          __unkeyed-1 = "sh";
+          desc = "Highlight surrounding";
+          mode = "n";
+        }
         {
           __unkeyed-1 = "<leader>b";
           group = "Buffers";
@@ -79,9 +116,64 @@
           ];
         }
         {
+          __unkeyed-1 = "<leader>/";
+          desc = "Ripgrep Project Root";
+          mode = "n";
+          icon = "󱐋";
+        }
+        {
+          __unkeyed-1 = "<leader>:";
+          desc = "Command History";
+          mode = "n";
+          icon = "";
+        }
+        {
+          __unkeyed-1 = "<leader>e";
+          __unkeyed-2 = "<cmd>Neotree toggle<cr>";
+          desc = "Toggle Neotree";
+          mode = "n";
+          icon = "󰙅";
+        }
+        {
+          __unkeyed-1 = "<leader>z";
+          __unkeyed-2 = "<cmd>ZenMode<CR>";
+          desc = "Zen-Mode toggle";
+          mode = "n";
+          silent = true;
+          icon = "󰚀";
+        }
+        {
+          __unkeyed-1 = "<leader>u";
+          __unkeyed-2 = "<cmd>UndotreeToggle<CR>";
+          desc = "Undotree toggle";
+          mode = "n";
+          silent = true;
+          icon = "";
+        }
+        {
           __unkeyed-1 = "<leader>w";
           group = "windows";
           proxy = "<C-w>";
+        }
+        {
+          __unkeyed-1 = "<leader>t";
+          group = "Toggleterm";
+          icon = "";
+        }
+        {
+          __unkeyed-1 = "<leader>l";
+          group = "Lsp";
+          icon = "";
+        }
+        {
+          __unkeyed-1 = "<leader>g";
+          group = "Git";
+          icon = "󰊢";
+        }
+        {
+          __unkeyed-1 = "<leader>j";
+          group = "JSDoc";
+          icon = "";
         }
         {
           __unkeyed-1 = "<leader>cS";
@@ -90,7 +182,7 @@
           mode = "v";
         }
         {
-          __unkeyed-1 = "<leader>db";
+          __unkeyed-1 = "<leader>p";
           __unkeyed-2 = {
             __raw = ''
               function()
@@ -101,6 +193,43 @@
           desc = "Breakpoint toggle";
           mode = "n";
           silent = true;
+        }
+        # Hide harpoon keybindings 1-9 from which-key
+        {
+          __unkeyed-1 = "<leader>1";
+          hidden = true;
+        }
+        {
+          __unkeyed-1 = "<leader>2";
+          hidden = true;
+        }
+        {
+          __unkeyed-1 = "<leader>3";
+          hidden = true;
+        }
+        {
+          __unkeyed-1 = "<leader>4";
+          hidden = true;
+        }
+        {
+          __unkeyed-1 = "<leader>5";
+          hidden = true;
+        }
+        {
+          __unkeyed-1 = "<leader>6";
+          hidden = true;
+        }
+        {
+          __unkeyed-1 = "<leader>7";
+          hidden = true;
+        }
+        {
+          __unkeyed-1 = "<leader>8";
+          hidden = true;
+        }
+        {
+          __unkeyed-1 = "<leader>9";
+          hidden = true;
         }
       ];
       win = {
