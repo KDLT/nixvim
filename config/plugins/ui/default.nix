@@ -3,6 +3,7 @@
     ./bufferline.nix
     ./colorizer.nix
     ./lualine.nix
+    ./noice.nix
     ./startify.nix
     ./tmux-navigator.nix
     ./virt-column.nix

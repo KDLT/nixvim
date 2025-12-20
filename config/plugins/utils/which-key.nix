@@ -45,43 +45,6 @@
           group = "Declared in LSPBuf as Hover";
           mode = "n";
         }
-        # mini.surround integration
-        {
-          __unkeyed-1 = "s";
-          group = "Surround";
-          icon = "󰅪 ";
-          mode = [ "n" "v" ];
-        }
-        {
-          __unkeyed-1 = "sa";
-          desc = "Add surrounding";
-          mode = [ "n" "v" ];
-        }
-        {
-          __unkeyed-1 = "sd";
-          desc = "Delete surrounding";
-          mode = "n";
-        }
-        {
-          __unkeyed-1 = "sr";
-          desc = "Replace surrounding";
-          mode = "n";
-        }
-        {
-          __unkeyed-1 = "sf";
-          desc = "Find surrounding (right)";
-          mode = "n";
-        }
-        {
-          __unkeyed-1 = "sF";
-          desc = "Find surrounding (left)";
-          mode = "n";
-        }
-        {
-          __unkeyed-1 = "sh";
-          desc = "Highlight surrounding";
-          mode = "n";
-        }
         {
           __unkeyed-1 = "<leader>b";
           group = "Buffers";

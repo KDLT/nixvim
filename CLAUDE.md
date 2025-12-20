@@ -55,8 +55,8 @@ config/
     ├── git/             # Git integration
     ├── lsp/             # Language servers and formatting
     ├── themes/          # Color schemes
-    ├── ui/              # UI enhancements
-    └── utils/           # Utility plugins
+    ├── ui/              # UI enhancements (bufferline, lualine, noice, etc.)
+    └── utils/           # Utility plugins (telescope, harpoon, which-key, etc.)
 ```
 
 Each subdirectory has a `default.nix` that imports its module files, creating a hierarchical auto-importing structure.
@@ -110,6 +110,9 @@ plugins.lsp = {
 ```
 
 Formatting is handled separately by conform.nvim in `config/plugins/lsp/conform.nix`.
+
+### LSP Floating Window Borders
+LSP floating windows (hover, signature help, diagnostics) are styled by noice.nvim in `config/plugins/ui/noice.nix`. This provides proper bordered windows for LSP documentation with the `lsp_doc_border` preset enabled.
 
 ## Common Issues
 

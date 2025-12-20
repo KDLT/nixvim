@@ -11,6 +11,7 @@ A declarative Neovim configuration using [nixvim](https://github.com/nix-communi
 - **Harpoon2** for quick file navigation with bufferline integration
 - **Telescope** for fuzzy finding files, grep, diagnostics, and LSP symbols
 - **Neo-tree** file explorer
+- **noice.nvim** for polished LSP hover, signature help, and diagnostic floating windows with borders
 - **mini.nvim** modules (icons, indentscope, surround)
 - **Catppuccin** color scheme
 - **Treesitter** for syntax highlighting and code understanding
@@ -65,8 +66,8 @@ config/
     ├── git/             # Git integration (gitsigns, lazygit)
     ├── lsp/             # LSP and formatting (conform.nvim)
     ├── themes/          # Color schemes (catppuccin)
-    ├── ui/              # UI enhancements (lualine, bufferline, zen-mode, which-key)
-    └── utils/           # Utilities (telescope, harpoon, neogen, toggleterm, mini)
+    ├── ui/              # UI enhancements (lualine, bufferline, noice, zen-mode)
+    └── utils/           # Utilities (telescope, harpoon, neogen, toggleterm, mini, which-key)
 ```
 
 ## Key Bindings
@@ -318,6 +319,22 @@ For groups:
   group = "My Group";
   icon = " ";
 }
+```
+
+### Customizing LSP Floating Windows
+
+LSP floating windows (hover, signature help, diagnostics) are managed by noice.nvim in `config/plugins/ui/noice.nix`. To customize borders or behavior:
+
+```nix
+plugins.noice.settings = {
+  presets = {
+    lsp_doc_border = true;  # Enable borders for LSP windows
+  };
+  lsp = {
+    hover.enabled = true;
+    signature.enabled = true;
+  };
+};
 ```
 
 ### Changing Options
