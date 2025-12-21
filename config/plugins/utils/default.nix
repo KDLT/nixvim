@@ -1,6 +1,6 @@
 {
   imports = [
-    #./auto-session.nix
+    ./auto-session.nix
     ./comment.nix
     ./dap.nix
     ./harpoon.nix

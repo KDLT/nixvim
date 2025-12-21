@@ -1,3 +1,5 @@
+# Repo: https://github.com/nvim-lualine/lualine.nvim
+# Nixvim Plugin: https://nix-community.github.io/nixvim/plugins/lualine/index.html
 {
   plugins.lualine = {
     enable = true;
@@ -39,7 +41,7 @@
               function()
                   local msg = ""
                   local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
-                  local clients = vim.lsp.get_active_clients()
+                  local clients = vim.lsp.get_clients()
                   if next(clients) == nil then
                       return msg
                   end
@@ -52,7 +54,7 @@
                   return msg
               end
             '';
-            icon = "";
+            icon = " ";
             color.fg = "#ffffff";
           }
           "encoding"
