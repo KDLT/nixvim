@@ -57,6 +57,26 @@
             icon = " ";
             color.fg = "#ffffff";
           }
+
+          # Show active formatter(s)
+          {
+            __unkeyed.__raw = ''
+              function()
+                  local conform = require("conform")
+                  local formatters = conform.list_formatters(0)
+                  if #formatters == 0 then
+                      return ""
+                  end
+                  local names = {}
+                  for _, formatter in ipairs(formatters) do
+                      table.insert(names, formatter.name)
+                  end
+                  return table.concat(names, ", ")
+              end
+            '';
+            icon = " ";
+            color.fg = "#a6e3a1";
+          }
           "encoding"
           "fileformat"
           "filetype"
