@@ -9,9 +9,11 @@ pkgs.mkShell {
     typescript-language-server
     prettierd
 
-    # # Rust
-    # cargo
-    # rustc
+    rustc # Rust
+    cargo # cargo keybindings to common cargo commands, mapped to <leader>r* in keymaps.nix
+    rust-analyzer # type checking, autocomplete, inline hints, go-to-definition, error diagnostics
+    rustfmt # auto-formatting rust code on save
+    clippy # rust linter for catching common mistakes
 
     # # Gleam
     # gleam

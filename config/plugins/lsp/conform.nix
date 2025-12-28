@@ -64,6 +64,8 @@
         typescript = [ "prettierd" ];
         markdown = [ "deno_fmt" ];
         cpp = [ "clang_format" ];
+        rust = [ "rustfmt" ];
+        toml = [ "taplo" ];
       };
 
       format_on_save = ''
@@ -101,24 +103,14 @@
       '';
 
       formatters = {
-        prettierd = {
-          command = lib.getExe pkgs.prettierd;
-        };
-        nixfmt-rfc-style = {
-          command = lib.getExe pkgs.nixfmt-rfc-style;
-        };
-        shellcheck = {
-          command = lib.getExe pkgs.shellcheck;
-        };
-        shfmt = {
-          command = lib.getExe pkgs.shfmt;
-        };
-        shellharden = {
-          command = lib.getExe pkgs.shellharden;
-        };
-        squeeze_blanks = {
-          command = lib.getExe' pkgs.coreutils "cat";
-        };
+        prettierd.command = lib.getExe pkgs.prettierd;
+        nixfmt-rfc-style.command = lib.getExe pkgs.nixfmt-rfc-style;
+        shellcheck.command = lib.getExe pkgs.shellcheck;
+        shfmt.command = lib.getExe pkgs.shfmt;
+        shellharden.command = lib.getExe pkgs.shellharden;
+        squeeze_blanks.command = lib.getExe' pkgs.coreutils "cat";
+        rustfmt.command = lib.getExe pkgs.rustfmt;
+        taplo.command = lib.getExe pkgs.taplo;
       };
 
     };

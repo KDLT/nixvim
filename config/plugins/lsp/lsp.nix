@@ -96,6 +96,26 @@
         # texlab.enable = true; # LaTeX https://github.com/latex-lsp/texlab
         # lua_ls.enable = true; # Lua https://github.com/luals/lua-language-server
         pylsp.enable = true; # Python https://github.com/python-lsp/python-lsp-server
+        rust_analyzer = {
+          enable = true; # Rust https://rust-analyzer.github.io/
+          installCargo = true;
+          installRustc = true;
+          settings = {
+            check.command = "clippy"; # use clippy for linting
+            cargo = {
+              allFeatures = true;
+              loadOutDirsFromCheck = true;
+            };
+            procMacro.enable = true;
+            inlayHints = {
+              bindingModeHints.enable = true;
+              closureReturnTypeHints.enable = "always";
+              lifetimeElisionHints.enable = "always";
+              typeHints.enable = true;
+            };
+          };
+        };
+        taplo.enable = true; # TOML LSP for cargo.toml https://taplo.tamasfe.dev/
         jsonls.enable = true; # JSON https://github.com/hrsh7th/vscode-langservers-extracted
         sqls.enable = true; # SQL https://github.com/sqls-server/sqls
         ts_ls = {
@@ -104,7 +124,9 @@
           extraOptions = {
             settings = {
               javascript = {
-                validate = { enable = true; }; # Enable validation for JSDoc
+                validate = {
+                  enable = true;
+                }; # Enable validation for JSDoc
                 suggest = {
                   completeFunctionCalls = true; # Enable function signature completion
                 };
@@ -114,7 +136,9 @@
                 };
               };
               typescript = {
-                validate = { enable = true; }; # Enable validation
+                validate = {
+                  enable = true;
+                }; # Enable validation
                 suggest = {
                   completeFunctionCalls = true; # Enable function signature completion
                 };
