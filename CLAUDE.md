@@ -64,6 +64,15 @@ Each subdirectory has a `default.nix` that imports its module files, creating a 
 ### Flake Integration
 The flake (`flake.nix`) imports the configuration module and wraps it with nixvim's `makeNixvimWithModule`. This is designed to be referenced as a flake input in a parent nix-darwin or NixOS configuration, not used standalone.
 
+## CRITICAL: Feature Discovery
+
+**When adding features, ALWAYS check the official nixvim documentation FIRST:**
+- Main site: https://nix-community.github.io/nixvim/
+- Plugins: https://nix-community.github.io/nixvim/plugins/
+- LSP servers: https://nix-community.github.io/nixvim/plugins/lsp/servers/
+
+Nixvim has 300+ pre-packaged plugins with tested configurations. Use these instead of generic web searches or random vim plugins. If the feature exists in nixvim docs, use the documented Nix syntax shown there.
+
 ## Important nixvim Patterns
 
 ### Modern Option Syntax

@@ -64,7 +64,7 @@
         typescript = [ "prettierd" ];
         markdown = [ "deno_fmt" ];
         cpp = [ "clang_format" ];
-        rust = [ "rustfmt" ];
+        # rust formatting handled by rustaceanvim
         toml = [ "taplo" ];
       };
 
@@ -109,7 +109,7 @@
         shfmt.command = lib.getExe pkgs.shfmt;
         shellharden.command = lib.getExe pkgs.shellharden;
         squeeze_blanks.command = lib.getExe' pkgs.coreutils "cat";
-        rustfmt.command = lib.getExe pkgs.rustfmt;
+        # rustfmt handled by rustaceanvim
         taplo.command = lib.getExe pkgs.taplo;
       };
 

@@ -98,49 +98,7 @@
       action = ":vertical resize +2<CR>";
       options.desc = "grow vertical current window";
     }
-    # Rust/Cargo-specific keybindings and commands
-    {
-      mode = [ "n" ];
-      key = "<leader>rc";
-      action = ":!cargo check<CR>";
-      options.desc = "Cargo check";
-    }
-    {
-      mode = [ "n" ];
-      key = "<leader>rb";
-      action = ":!cargo build<CR>";
-      options.desc = "Cargo build";
-    }
-    {
-      mode = [ "n" ];
-      key = "<leader>rr";
-      action = ":!cargo run<CR>";
-      options.desc = "Cargo run";
-    }
-    {
-      mode = [ "n" ];
-      key = "<leader>rt";
-      action = ":!cargo test<CR>";
-      options.desc = "Cargo test";
-    }
-    {
-      mode = [ "n" ];
-      key = "<leader>rr";
-      action = ":!cargo test -- --noapture<CR>";
-      options.desc = "Cargo test (show output)";
-    }
-    {
-      mode = [ "n" ];
-      key = "<leader>rC";
-      action = ":!cargo clippy<CR>";
-      options.desc = "Cargo clippy";
-    }
-    {
-      mode = [ "n" ];
-      key = "<leader>rd";
-      action = ":!cargo doc --open<CR>";
-      options.desc = "Cargo doc (open)";
-    }
+    # Rust/Cargo keybindings moved to rustaceanvim.nix for better integration
     ## VISUAL: keeps the highlight intact after indenting
     {
       key = ">";

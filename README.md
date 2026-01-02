@@ -5,13 +5,15 @@ A declarative Neovim configuration using [nixvim](https://github.com/nix-communi
 ## Features
 
 - **Modular structure** with auto-importing plugin groups
-- **LSP support** for Nix, Python, TypeScript/JavaScript, HTML, CSS, Bash, and more
+- **LSP support** for Rust, Nix, Python, TypeScript/JavaScript, HTML, CSS, Bash, and more
+- **Rust development** with rustaceanvim (rust-analyzer, clippy, cargo commands, macro expansion, debugger support)
 - **JSDoc type checking** for JavaScript with neogen auto-generation
-- **Format-on-save** using deno_fmt (JS/TS/Markdown), prettierd (HTML), and language-specific formatters
+- **Format-on-save** using prettierd, deno_fmt, and language-specific formatters
 - **Harpoon2** for quick file navigation with bufferline integration
 - **Telescope** for fuzzy finding files, grep, diagnostics, and LSP symbols
 - **Neo-tree** file explorer
 - **noice.nvim** for polished LSP hover, signature help, and diagnostic floating windows with borders
+- **dressing.nvim** for improved code action and input UI with Telescope integration
 - **mini.nvim** modules (icons, indentscope, surround)
 - **Catppuccin** color scheme
 - **Treesitter** for syntax highlighting and code understanding
@@ -102,8 +104,28 @@ Harpoon numbers are displayed in bufferline for easy identification.
 - `<leader>1` to `<leader>9` - Jump to Harpoon file 1-9
 
 ### LSP & Diagnostics
+
+**Code Navigation & Actions** (`<leader>c` - all use Telescope pickers):
+- `<leader>ca` - Code actions (fixes, refactorings via Telescope)
+- `<leader>cr` - Rename symbol across entire codebase
+- `<leader>cd` - Go to definition (Telescope picker)
+- `<leader>cD` - Go to declaration (Telescope picker)
+- `<leader>ci` - Go to implementation (Telescope picker)
+- `<leader>ct` - Go to type definition (Telescope picker)
+- `<leader>cR` - Find all references (Telescope picker)
+- `<leader>ch` - Show signature help (function parameters)
+- `<leader>cs` - Document symbols (file outline)
+- `<leader>cS` - Workspace symbols (search across project)
+
+**Quick LSP actions** (native Neovim keybindings):
 - `K` - Show hover documentation
-- `gd` - Goto definition
+- `gd` - Jump directly to definition
+- `gra` - Code actions
+- `grr` - Find references
+- `gri` - Go to implementation
+- `grn` - Rename
+
+**Diagnostics**:
 - `<leader>d` - Show diagnostic in float
 - `]d` - Next diagnostic
 - `[d` - Previous diagnostic
@@ -165,10 +187,29 @@ Format happens automatically on save. To disable:
 - `:FormatToggle` - Toggle globally
 - `:FormatToggle!` - Toggle for current buffer
 
+### Rust (`<leader>r`)
+
+Powered by rustaceanvim - all commands use interactive pickers.
+
+**Core Workflow:**
+- `<leader>rr` - Run target (picker shows binaries, examples, etc.)
+- `<leader>rt` - Run tests (picker shows all test targets)
+- `<leader>rc` - Run check (cargo check with clippy)
+- `<leader>rd` - Open docs.rs for symbol under cursor
+
+**Rust-Specific Features:**
+- `<leader>re` - Explain error (detailed compiler error explanation)
+- `<leader>rm` - Expand macro (show macro expansion)
+- `<leader>rh` - Hover actions (code actions for symbol under cursor)
+- `<leader>rg` - View crate graph (dependency visualization)
+- `<leader>rD` - Debug target (requires codelldb)
+
 ## Enabled Language Servers
 
 - **Nix**: nil_ls
 - **Python**: pylsp
+- **Rust**: rustaceanvim (rust-analyzer with clippy linting, inlay hints, cargo integration)
+- **TOML**: taplo (for Cargo.toml)
 - **JavaScript/TypeScript**: ts_ls (with JSDoc type checking enabled)
 - **HTML**: html (diagnostics only, formatting disabled)
 - **CSS**: cssls
@@ -205,7 +246,9 @@ function createPerson(name, age) {
 
 Formatters are managed by conform.nvim and run on save:
 
-- **JavaScript/TypeScript**: deno_fmt
+- **Rust**: rustfmt (via rustaceanvim)
+- **TOML**: taplo (for Cargo.toml)
+- **JavaScript/TypeScript**: prettierd (with semicolons, single quotes)
 - **Markdown**: deno_fmt
 - **HTML**: prettierd
 - **Nix**: nixfmt-rfc-style
@@ -248,14 +291,14 @@ Edit `config/plugins/lsp/lsp.nix`:
 
 ```nix
 servers = {
-  # Add your LSP
-  rust_analyzer.enable = true;
+  # Add your LSP (for Rust, use rustaceanvim instead)
+  pyright.enable = true;
 };
 ```
 
 If the LSP provides formatting, disable it to avoid conflicts with conform.nvim:
 ```nix
-rust_analyzer = {
+pyright = {
   enable = true;
   onAttach.function = ''
     client.server_capabilities.documentFormattingProvider = false
@@ -270,15 +313,17 @@ Edit `config/plugins/lsp/conform.nix`:
 
 ```nix
 formatters_by_ft = {
-  rust = [ "rustfmt" ];
+  python = [ "black" ];
 };
 
 formatters = {
-  rustfmt = {
-    command = lib.getExe pkgs.rustfmt;
+  black = {
+    command = lib.getExe pkgs.black;
   };
 };
 ```
+
+**Note**: Rust formatting is handled by rustaceanvim automatically.
 
 ### Adding Keybindings
 

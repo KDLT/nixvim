@@ -38,6 +38,67 @@
       action.__raw = "vim.diagnostic.setloclist";
       options.desc = "Add diagnostics to location list";
     }
+    # LSP Code Actions - moved from native gr* mappings to <leader>c*
+    {
+      key = "<leader>ca";
+      mode = [ "n" "v" ];
+      action.__raw = "vim.lsp.buf.code_action";
+      options.desc = "Code Actions";
+    }
+    {
+      key = "<leader>cr";
+      mode = [ "n" ];
+      action.__raw = "vim.lsp.buf.rename";
+      options.desc = "Rename Symbol";
+    }
+    {
+      key = "<leader>cR";
+      mode = [ "n" ];
+      action = "<cmd>Telescope lsp_references<CR>";
+      options.desc = "Find References";
+    }
+    {
+      key = "<leader>ci";
+      mode = [ "n" ];
+      action = "<cmd>Telescope lsp_implementations<CR>";
+      options.desc = "Go to Implementation";
+    }
+    {
+      key = "<leader>ct";
+      mode = [ "n" ];
+      action = "<cmd>Telescope lsp_type_definitions<CR>";
+      options.desc = "Go to Type Definition";
+    }
+    {
+      key = "<leader>cd";
+      mode = [ "n" ];
+      action = "<cmd>Telescope lsp_definitions<CR>";
+      options.desc = "Go to Definition";
+    }
+    {
+      key = "<leader>cD";
+      mode = [ "n" ];
+      action = "<cmd>Telescope lsp_declarations<CR>";
+      options.desc = "Go to Declaration";
+    }
+    {
+      key = "<leader>ch";
+      mode = [ "n" ];
+      action.__raw = "vim.lsp.buf.signature_help";
+      options.desc = "Signature Help";
+    }
+    {
+      key = "<leader>cs";
+      mode = [ "n" ];
+      action = "<cmd>Telescope lsp_document_symbols<CR>";
+      options.desc = "Document Symbols";
+    }
+    {
+      key = "<leader>cS";
+      mode = [ "n" ];
+      action = "<cmd>Telescope lsp_workspace_symbols<CR>";
+      options.desc = "Workspace Symbols";
+    }
   ];
 
   plugins = {
@@ -96,25 +157,7 @@
         # texlab.enable = true; # LaTeX https://github.com/latex-lsp/texlab
         # lua_ls.enable = true; # Lua https://github.com/luals/lua-language-server
         pylsp.enable = true; # Python https://github.com/python-lsp/python-lsp-server
-        rust_analyzer = {
-          enable = true; # Rust https://rust-analyzer.github.io/
-          installCargo = true;
-          installRustc = true;
-          settings = {
-            check.command = "clippy"; # use clippy for linting
-            cargo = {
-              allFeatures = true;
-              loadOutDirsFromCheck = true;
-            };
-            procMacro.enable = true;
-            inlayHints = {
-              bindingModeHints.enable = true;
-              closureReturnTypeHints.enable = "always";
-              lifetimeElisionHints.enable = "always";
-              typeHints.enable = true;
-            };
-          };
-        };
+        # rust_analyzer moved to rustaceanvim.nix for better Rust integration
         taplo.enable = true; # TOML LSP for cargo.toml https://taplo.tamasfe.dev/
         jsonls.enable = true; # JSON https://github.com/hrsh7th/vscode-langservers-extracted
         sqls.enable = true; # SQL https://github.com/sqls-server/sqls

@@ -2,6 +2,7 @@
   imports = [
     ./bufferline.nix
     ./colorizer.nix
+    ./dressing.nix
     ./lualine.nix
     ./noice.nix
     ./startify.nix

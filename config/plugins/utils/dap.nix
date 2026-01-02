@@ -1,6 +1,12 @@
+{ pkgs, lib, ... }:
 {
-  plugins.dap = {
-    # dap means debug adapter protocol, dunno what this is yet
-    enable = true;
+  plugins = {
+    dap = {
+      enable = true;
+    };
+    # DAP UI - provides the debugging interface
+    dap-ui = {
+      enable = true;
+    };
   };
 }
