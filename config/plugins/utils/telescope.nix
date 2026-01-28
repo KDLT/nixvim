@@ -94,18 +94,56 @@
       };
     };
 
-    settings.defaults = {
-      file_ignore_patterns = [
-        # Telescope builtins won't appear if nix store is ignored
-        # "^/nix/store/" # i don't want old files populated by nix/store
-        "^.git/"
-        "^.mypy_cache/"
-        "^__pycache__/"
-        "^output/"
-        "^data/"
-        "^.ipynb"
-      ];
-      set_env.COLORTERM = "truecolor";
+    settings = {
+      defaults = {
+        file_ignore_patterns = [
+          # Telescope builtins won't appear if nix store is ignored
+          # "^/nix/store/" # i don't want old files populated by nix/store
+          "^.git/"
+          "^.mypy_cache/"
+          "^__pycache__/"
+          "^output/"
+          "^data/"
+          "^.ipynb"
+        ];
+        set_env.COLORTERM = "truecolor";
+
+        # Include hidden AND gitignored files (like .env) in ripgrep searches
+        # Manually exclude directories we don't want
+        vimgrep_arguments = [
+          "rg"
+          "--color=never"
+          "--no-heading"
+          "--with-filename"
+          "--line-number"
+          "--column"
+          "--smart-case"
+          "--hidden"
+          "--no-ignore"
+          "--glob"
+          "!.git/*"
+          "--glob"
+          "!node_modules/*"
+          "--glob"
+          "!**/node_modules/*"
+          "--glob"
+          "!dist/*"
+          "--glob"
+          "!docs/*"
+        ];
+      };
+
+      # Show hidden files in file finder (also needs no_ignore for .env)
+      pickers.find_files = {
+        hidden = true;
+        no_ignore = true;
+        file_ignore_patterns = [
+          "^.git/"
+          "^node_modules/"
+          "^dist/"
+          "^docs/"
+        ];
+      };
     };
   };
 }
