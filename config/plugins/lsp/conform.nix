@@ -48,7 +48,7 @@
       log_level = "warn";
       formatters_by_ft = {
         nix = [
-          "nixfmt-rfc-style"
+          "nixfmt"
         ];
         bash = [
           "shellcheck"
@@ -104,7 +104,7 @@
 
       formatters = {
         prettierd.command = lib.getExe pkgs.prettierd;
-        nixfmt-rfc-style.command = lib.getExe pkgs.nixfmt-rfc-style;
+        nixfmt.command = lib.getExe pkgs.nixfmt;
         shellcheck.command = lib.getExe pkgs.shellcheck;
         shfmt.command = lib.getExe pkgs.shfmt;
         shellharden.command = lib.getExe pkgs.shellharden;

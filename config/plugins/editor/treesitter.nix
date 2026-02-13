@@ -11,19 +11,19 @@
         highlight.enable = true;
         indent.enable = true;
       };
-      folding = false;
+      # folding = false; // deprecated
     };
 
-    treesitter-refactor = {
-      enable = true;
-      settings = {
-        highlight_definitions = {
-          enable = true;
-          # set to false if update time of ~100
-          clear_on_cursor_move = false;
-        };
-      };
-    };
+    # treesitter-refactor = {
+    #   enable = true;
+    #   settings = {
+    #     highlight_definitions = {
+    #       enable = true;
+    #       # set to false if update time of ~100
+    #       clear_on_cursor_move = false;
+    #     };
+    #   };
+    # };
 
     treesitter-context = {
       enable = true;
